@@ -382,7 +382,8 @@ NSString *lgeUDAPRequestURI[8] = {
     // Present the alert controller
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIViewController *rootViewController = window.rootViewController;
-    [rootViewController presentViewController: _pairingAlert animated:YES completion:nil];
+    UIViewController *presentingViewController = rootViewController.presentedViewController ? rootViewController.presentedViewController : rootViewController;
+    [presentingViewController presentViewController:_pairingAlert animated:YES completion:nil];
 }
 
 - (void) dismissPairingWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure
