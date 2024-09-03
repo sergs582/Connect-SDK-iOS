@@ -367,7 +367,8 @@
     dispatch_on_main(^{
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         UIViewController *rootViewController = window.rootViewController;
-        [rootViewController presentViewController: _pairingAlert animated:YES completion:nil];
+        UIViewController *presentingViewController = rootViewController.presentedViewController ? rootViewController.presentedViewController : rootViewController;
+        [presentingViewController presentViewController: _pairingAlert animated:YES completion:nil];
     });
 }
 
