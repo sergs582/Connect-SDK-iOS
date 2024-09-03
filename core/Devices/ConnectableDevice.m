@@ -457,7 +457,9 @@
             if (pairingType == DeviceServicePairingTypeAirPlayMirroring) {
                 UIWindow *window = [UIApplication sharedApplication].keyWindow;
                 UIViewController *rootViewController = window.rootViewController;
-                [rootViewController presentViewController: (UIAlertController *)pairingData animated:YES completion:nil];
+                UIViewController *presentingViewController = rootViewController.presentedViewController ? rootViewController.presentedViewController : rootViewController;
+
+                [presentingViewController presentViewController:(UIAlertController *)pairingData animated:YES completion:nil];
             } 
         }
     }
